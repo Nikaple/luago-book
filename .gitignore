@@ -18,3 +18,7 @@ target/
 # *.luac
 luac.out
 *.DS_Store
+
+# JS/TS
+*.log
+node_modules
