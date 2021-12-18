@@ -36,7 +36,7 @@ export class LuaStack {
 
     isValid(idx: number) {
         const absIdx = this.absIndex(idx);
-        return absIdx > 0 && absIdx < this.top;
+        return absIdx > 0 && absIdx <= this.top;
     }
 
     get(idx: number) {
@@ -54,5 +54,14 @@ export class LuaStack {
             return;
         }
         throw new Error('invalid index!');
+    }
+
+    reverse(from: number, to: number) {
+        const slots = this.slots;
+        while (from < to) {
+            [slots[from], slots[to]] = [slots[to], slots[from]];
+            from++;
+            to--;
+        }
     }
 }

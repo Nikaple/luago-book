@@ -1,7 +1,7 @@
 import { LuaType } from '../api/consts';
 
 export class LuaValue {
-    val: any;
+    val: null | boolean | bigint | number | string;
     constructor(val: any) {
         this.val = val;
     }
@@ -20,5 +20,16 @@ export class LuaValue {
             default:
                 throw new Error('Unknown type');
         }
+    }
+}
+
+export function convertToBoolean(val: LuaValue): boolean {
+    switch (val.typeOf()) {
+        case LuaType.NIL:
+            return false;
+        case LuaType.BOOLEAN:
+            return val.val as boolean;
+        default:
+            return true;
     }
 }

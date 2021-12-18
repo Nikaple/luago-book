@@ -1,6 +1,4 @@
-import { LuaStack } from '../state/lua-stack';
-
-export type LuaType = number;
+import { LuaType } from './consts';
 
 export interface ILuaState {
     /* basic stack manipulation */
@@ -30,50 +28,15 @@ export interface ILuaState {
     isFunction(idx: number): boolean;
     toBoolean(idx: number): boolean;
     toInteger(idx: number): number;
-    toIntegerX(idx: number): [number, boolean];
+    toIntegerX(idx: number): readonly [number, true] | readonly [0, false];
     toNumber(idx: number): number;
-    toNumberX(idx: number): [number, boolean];
+    toNumberX(idx: number): readonly [number, true] | readonly [0, false];
     toString(idx: number): string;
-    toStringX(idx: number): [string, boolean];
+    toStringX(idx: number): readonly [string, true] | readonly ['', false];
     /* push functions (TS -> stack): */
     pushNil(): void;
     pushBoolean(b: boolean): void;
     pushInteger(n: number): void;
     pushNumber(n: number): void;
     pushString(s: string): void;
-}
-
-export class LuaState implements ILuaState {
-    stack: LuaStack;
-
-    constructor() {
-        this.stack = new LuaStack();
-    }
-
-    getTop() {
-        return this.stack.top;
-    }
-    absIndex(idx: number) {
-        return this.stack.absIndex(idx);
-    }
-    checkStack() {
-        return true;
-    }
-    pop(n: number) {
-        for (let i = 0; i < n; i++) {
-            this.stack.pop();
-        }
-    }
-    copy(fromIdx: number, toIdx: number) {
-        this.stack.set(toIdx, this.stack.get(fromIdx));
-    }
-    pushValue(idx: number) {
-        this.stack.push(this.stack.get(idx));
-    }
-    replace(idx: number) {
-        this.stack.set(idx, this.stack.pop());
-    }
-    insert() {}
-    remove() {}
-    rotate() {}
 }
