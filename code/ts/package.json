@@ -1,13 +1,7 @@
 {
-  "name": "ts",
+  "name": "luago-book-ts",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "prettier": {
     "printWidth": 80,
@@ -17,6 +11,7 @@
   "devDependencies": {
     "@types/node": "^17.0.0",
     "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   },
   "dependencies": {
