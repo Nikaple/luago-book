@@ -18,6 +18,7 @@ target/
 # *.luac
 luac.out
 *.DS_Store
+.vscode
 
 # JS/TS
 *.log
