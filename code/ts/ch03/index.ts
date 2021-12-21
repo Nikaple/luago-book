@@ -124,13 +124,13 @@ function printDetail(proto: Prototype) {
     print(`locals (${LocVars.length}):\n`);
     LocVars.forEach((locVar, i) => {
         const { EndPC, StartPC, VarName } = locVar;
-        print(`\t${i}\t${VarName}\t${StartPC + 1}\t${EndPC + 1}`);
+        print(`\t${i}\t${VarName}\t${StartPC + 1}\t${EndPC + 1}\n`);
     });
 
     print(`upvalues (${Upvalues.length}):\n`);
     Upvalues.forEach((upval, i) => {
         const { Idx, Instack } = upval;
-        print(`\t${i}\t${upvalName(proto, i)}\t${Instack}\t${Idx}`);
+        print(`\t${i}\t${upvalName(proto, i)}\t${Instack}\t${Idx}\n`);
     });
 }
 

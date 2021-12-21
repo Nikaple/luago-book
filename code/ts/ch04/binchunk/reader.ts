@@ -238,7 +238,7 @@ export class BinaryReader {
     }
 
     readLuaInt() {
-        return this.buffer.readBigInt64LE();
+        return Number(this.buffer.readBigInt64LE());
     }
 
     readLuaNumber() {
